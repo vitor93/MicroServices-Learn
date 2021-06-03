@@ -7,6 +7,11 @@ services:
       - "27017:27017"
     volumes:
       - "c:\\data\\catalogdb:/data/db"
+  mongoclient:
+    container_name: mongoclient
+    #restart: always
+    ports:
+       - "8005:3000"
   catalog.api:
     container_name: catalog.api
     environment:
