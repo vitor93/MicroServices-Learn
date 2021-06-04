@@ -26,3 +26,10 @@ services:
     container_name: basketdb
     ports:
       - "6379:6379"
+
+  basket.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "80"
+
