@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Ordering.Application.Features.Orders.Commands.CheckoutOrder
+namespace Ordering.Application.Features.Orders.Commands.UpdateOrder
 {
-    public class CheckoutOrderCommand : IRequest<int>
+    public class UpdateOrderCommand : IRequest
     {
         public int Id { get; set; }
         public string UserName { get; set; }
