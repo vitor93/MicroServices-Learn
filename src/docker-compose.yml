@@ -38,3 +38,12 @@ services:
 
   portainer:
     image: portainer/portainer-ce
+
+  orderdb:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+  ordering.api:
+    image: ${DOCKER_REGISTRY-}orderingapi
+    build:
+      context: .
+      dockerfile: Services/Ordering/Ordering.API/Dockerfile
+
