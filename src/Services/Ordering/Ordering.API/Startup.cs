@@ -31,6 +31,8 @@ namespace Ordering.API
 
             //AutoMapper
             services.AddAutoMapper(typeof(Startup));
+            //Add BasketCheckoutconsumer to Have Dependency Injection
+            services.AddScoped<BasketCheckoutConsumer>();
 
             //MassTransit-RabbitMQ Configuration
             services.AddMassTransit(config => {
