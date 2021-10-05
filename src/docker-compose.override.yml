@@ -104,7 +104,8 @@ services:
       - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
-      #- rabbitmq
+      - rabbitmq
+      - basket.api
     ports:
       - "8004:80"
 
