@@ -7,11 +7,11 @@ services:
       - "27017:27017"
     volumes:
       - "c:\\data\\catalogdb:/data/db"
-  mongoclient:
-    container_name: mongoclient
-    #restart: always
-    ports:
-       - "8005:3000"
+  #mongoclient:
+  #  container_name: mongoclient
+  #  #restart: always
+  #  ports:
+  #     - "8005:3000"
   catalog.api:
     container_name: catalog.api
     environment:
@@ -59,15 +59,15 @@ services:
       - "5432:5432"
     volumes:
       - "c:\\data\\discountdb:/var/lib/postgresql/data/"
-  pgadmin:
-    container_name: pgadmin
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=crave.vitor@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=admin1234
-    ports:
-      - "5050:80"
-    volumes:
-      - "c:\\data\\pgadmin:/root/.pgadmin"
+  #pgadmin:
+  #  container_name: pgadmin
+  #  environment:
+  #    - PGADMIN_DEFAULT_EMAIL=crave.vitor@gmail.com
+  #    - PGADMIN_DEFAULT_PASSWORD=admin1234
+  #  ports:
+  #    - "5050:80"
+  #  volumes:
+  #    - "c:\\data\\pgadmin:/root/.pgadmin"
 
   discount.grpc:
     container_name: discount.grpc
@@ -101,7 +101,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:OrderingConnectionString=Server=orderdb;Database=OrderDb;User Id=sa;Password=SwN12345678"
-      #- "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - orderdb
       #- rabbitmq

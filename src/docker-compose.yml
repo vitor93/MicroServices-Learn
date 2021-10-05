@@ -4,8 +4,8 @@ services:
 
   catalogdb:
     image: mongo
-  mongoclient:
-    image: mongoclient/mongoclient
+  #mongoclient:
+  #  image: mongoclient/mongoclient
   catalog.api:
     image: ${DOCKER_REGISTRY-}catalogapi
     build:
@@ -27,8 +27,8 @@ services:
       dockerfile: Services/Discount/Discount.API/Dockerfile
   discountdb:
     image: postgres
-  pgadmin:
-    image: dpage/pgadmin4
+  #pgadmin:
+  #  image: dpage/pgadmin4
 
   discount.grpc:
     image: ${DOCKER_REGISTRY-}discountgrpc
