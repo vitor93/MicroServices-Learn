@@ -1,4 +1,5 @@
-﻿using AspnetRunBasics.Models;
+﻿using AspnetRunBasics.Extensions;
+using AspnetRunBasics.Models;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,19 +15,32 @@ namespace AspnetRunBasics.Services
             _client = client ?? throw new ArgumentNullException(nameof(client));
         }
 
-        public Task CheckoutBasket(BasketCheckoutModel model)
+        public async Task CheckoutBasket(BasketCheckoutModel model)
         {
-            throw new NotImplementedException();
+            var response = await _client.PostAsJson($"/Basket/Checkout", model);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
         }
 
-        public Task<BasketModel> GetBasket(string userName)
+        public async Task<BasketModel> GetBasket(string userName)
         {
-            throw new NotImplementedException();
+            var response = await _client.GetAsync($"/Basket/{userName}");
+            return await response.ReadContentAs<BasketModel>();
         }
 
-        public Task<BasketModel> UpdateBasket(BasketModel model)
+        public async Task<BasketModel> UpdateBasket(BasketModel model)
         {
-            throw new NotImplementedException();
+            var response = await _client.PostAsJson($"/Basket", model);
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.ReadContentAs<BasketModel>();
+            }
+            else
+            {
+                throw new Exception("Something went wrong when calling api.");
+            }
         }
     }
 }
