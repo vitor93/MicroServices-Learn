@@ -87,7 +87,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "c:\\data\\portainer:/data"
-
+  #Volumes to MSSQL
+  #<host directory>/data:/var/opt/mssql/data -v <host directory>/log:/var/opt/mssql/log -v <host directory>/secrets:/var/opt/mssql/secrets
   orderdb:
     container_name: orderdb
     environment:
